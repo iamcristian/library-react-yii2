@@ -61,4 +61,11 @@ class Book extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Loan::class, ['book_id' => 'id']);
     }
+
+    public function markAsBorrowed()
+    {
+        $this->is_available_for_loan = (int)false;
+        $this->save();
+    }
+
 }

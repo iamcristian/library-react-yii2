@@ -64,6 +64,8 @@ $config = [
             'rules' => [
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'member'],
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'book'],
+                'GET loans' => 'loan/index',
+                'POST loans' => 'loan/borrow'
             ],
         ],
     ],
