@@ -16,6 +16,17 @@ $config = [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'M11CVZNFLKCAmd4KGLLh4kYpxj2VjNXG',
         ],
+        'response' => [
+            'format' => \yii\web\Response::FORMAT_JSON,
+            'class' => 'yii\web\Response',
+            'on beforeSend' => function ($event){
+                $response = $event->sender;
+                $response->headers->add('Access-Control-Allow-Origin', 'http://localhost:3000');
+                $response->headers->add('Access-Control-Allow-Credentials', 'true');
+                $response->headers->add('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+                $response->headers->add('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+            }
+        ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
