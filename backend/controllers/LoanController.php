@@ -9,8 +9,8 @@ use app\models\Book;
 
 class LoanController extends \yii\web\Controller
 {
-
     // public $enableCsrfValidation = false;
+
     public function actionIndex()
     {
         $loans = Loan::find()->all();
