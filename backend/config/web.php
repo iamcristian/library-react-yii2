@@ -15,11 +15,14 @@ $config = [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'M11CVZNFLKCAmd4KGLLh4kYpxj2VjNXG',
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+            ],
         ],
         'response' => [
             'format' => \yii\web\Response::FORMAT_JSON,
             'class' => 'yii\web\Response',
-            'on beforeSend' => function ($event){
+            'on beforeSend' => function ($event) {
                 $response = $event->sender;
                 $response->headers->add('Access-Control-Allow-Origin', 'http://localhost:3000');
                 $response->headers->add('Access-Control-Allow-Credentials', 'true');
@@ -53,14 +56,16 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
+
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'enableStrictParsing' => true,
             'rules' => [
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'member'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'book'],
             ],
         ],
-        */
     ],
     'params' => $params,
 ];
