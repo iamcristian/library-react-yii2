@@ -1,20 +1,17 @@
 import { Navigate, useNavigate, useParams } from "react-router-dom";
-import { getBookById } from "../helpers";
+import { useFetch } from "../../hooks/useFetch";
 
 export const MemberPage = () => {
   const { memberId } = useParams();
   const navigate = useNavigate();
 
-  const member = getBookById(bookId);
-  console.log(member);
+  const element = useFetch(`http://localhost:8080/members/${memberId}`);
 
   const onNavigateBack = () => {
     navigate(-1);
   };
 
-  if (!member) {
-    return <Navigate to={"/members"} />;
-  }
+  const member = element.data;
 
   return (
     <div className="row mt-5">
@@ -27,19 +24,15 @@ export const MemberPage = () => {
       </div>
 
       <div className="col-8">
-        <h3>{member.name}</h3>
+        <h3>{member && member.name}</h3>
         <ul className="list-group list-group-flush">
           <li className="list-group-item">
-            <b>Author </b>
-            {member.author}
+            <b>Id </b>
+            {member && member.id}
           </li>
           <li className="list-group-item">
-            <b>Publisher: </b>
-            {member.release_year}
-          </li>
-          <li className="list-group-item">
-            <b>First appearance: </b>
-            {member.is_available}
+            <b>Started on: </b>
+            {member && member.started_on}
           </li>
         </ul>
 

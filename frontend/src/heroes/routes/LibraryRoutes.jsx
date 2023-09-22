@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { Navbar } from "../../ui";
-import { BooksPage, BookPage, MembersPage, SearchPage } from "../pages";
+import { BooksPage, BookPage, MembersPage, SearchPage, MemberPage } from "../pages";
 
 export const LibraryRoutes = () => {
   return (
@@ -14,7 +14,7 @@ export const LibraryRoutes = () => {
 
           <Route path="search" element={<SearchPage />} />
           <Route path="book/:bookId" element={<BookPage />} />
-          <Route path="member/:memberId" element={<BookPage />} />
+          <Route path="member/:memberId" element={<MemberPage />} />
 
           <Route path="/" element={<Navigate to={"/books"} />} />
         </Routes>

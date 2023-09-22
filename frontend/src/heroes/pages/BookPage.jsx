@@ -28,11 +28,15 @@ export const BookPage = () => {
             </li>
             <li className="list-group-item">
               <b>Publisher: </b>
-              { book && book.release_year}
+              {book && book.release_year}
             </li>
             <li className="list-group-item">
               <b>First appearance: </b>
-              {book && book.is_available}
+              {book && book.release_year}
+            </li>
+            <li className="list-group-item">
+              <b>Stock: </b>
+              {book && book.is_available? "Yes" : "No"}
             </li>
           </ul>
 
@@ -44,39 +48,3 @@ export const BookPage = () => {
     </>
   );
 };
-
-/*
- <>
-      {book && 
-        <div className="row mt-5">
-          <div className="col-4">
-          </div>
-
-          <div className="col-8">
-            <h3>{book.name}</h3>
-            <ul className="list-group list-group-flush">
-              <li className="list-group-item">
-                <b>Author </b>
-                {book.author}
-              </li>
-              <li className="list-group-item">
-                <b>Publisher: </b>
-                {book.release_year}
-              </li>
-              <li className="list-group-item">
-                <b>First appearance: </b>
-                {book.is_available}
-              </li>
-            </ul>
-
-            <button
-              className="btn btn-outline-primary"
-              onClick={onNavigateBack}
-            >
-              Return
-            </button>
-          </div>
-        </div>
-      }
- </>
-    */
