@@ -2,7 +2,6 @@ import queryString from "query-string";
 
 import { useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
-import { BookCard } from "../components/BookCard";
 import { getBooksByName } from "../helpers/getBooksByName";
 
 export const SearchPage = () => {

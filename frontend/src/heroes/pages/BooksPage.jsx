@@ -1,16 +1,13 @@
+import { Link } from "react-router-dom";
 import { BooksList } from "../components/BooksList";
-
-let createBook = () => {
-  console.log("createBook");
-};
 
 export const BooksPage = () => {
   return (
     <>
       <h1>Books</h1>
-      <button className="btn btn-primary" onClick={createBook}>
-        Add Book
-      </button>
+      <Link to={"/books/create"}>
+        <button className="btn btn-primary">Add Book</button>
+      </Link>
       <hr />
 
       <BooksList />
