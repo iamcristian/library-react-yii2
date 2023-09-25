@@ -19,7 +19,7 @@ class m230919_142612_seed_member_table extends Migration
     {
         $faker = Faker\Factory::create();
         
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 100; $i++) {
             $this->insert(
                 'member',
                 [

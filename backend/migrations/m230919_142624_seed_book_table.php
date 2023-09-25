@@ -17,7 +17,7 @@ class m230919_142624_seed_book_table extends Migration
 
     private function insertFakeBooks(){
         $faker = Faker\Factory::create();
-        for($i = 0; $i < 50; $i++){
+        for($i = 0; $i < 100; $i++){
             $this->insert(
                 'book',
                 [
