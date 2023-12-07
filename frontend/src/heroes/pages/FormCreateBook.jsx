@@ -1,7 +1,11 @@
 import { useForm } from "react-hook-form";
 import "./CreateBook.css";
+import { useNavigate } from "react-router-dom";
 
 export const FormCreateBook = () => {
+
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -11,9 +15,14 @@ export const FormCreateBook = () => {
   const onSubmit = (data) => {
     console.log(data);
     createBook(data);
+    onNavigateBack();
+};
+
+  const onNavigateBack = () => {
+    navigate(-1);
   };
 
-  let createBook = async (data) =>
+  const createBook = async (data) =>
     fetch("http://localhost:8080/books", {
       method: "POST",
       headers: {
@@ -27,8 +36,6 @@ export const FormCreateBook = () => {
       }),
     });
 
-  console.log(watch("example")); // watch input value by passing the name of it
-
   return (
     <>
       <h1>Create Book</h1>
@@ -37,7 +44,7 @@ export const FormCreateBook = () => {
         <input
           type="text"
           placeholder="name"
-          {...register("name", { required: true })}
+          {...register("name", { required: true, maxLength: 20, minLength: 3, pattern: /^[A-Za-z]+$/i  })}
         />
         {errors.name && <span>This field is required</span>}
         <input
